@@ -2,11 +2,11 @@
 
 [![dev packages](https://david-dm.org/silveryiris/bot-currency-rate-api-server.svg)](https://david-dm.org/silveryiris/bot-currency-rate-api-server)
 
-Fetch csv currency rate from www.bot.com.tw and provides rest api.
+Fetch currency rate from www.bot.com.tw csv file and provides rest api.
 
 # Usage
 
-It's a standalone api server. you can integrate these middleware by you own.
+It's a standalone api server. you can integrate these middlewares by your own.
 
 # Start up server
 ````
@@ -30,7 +30,7 @@ SERVER_PORT = 66666
 CACHE_TIME = 20m
 ````
 
-### Default value without .env file is 
+### Default value without .env file : 
 ````
 SERVER_PORT = 5566
 

@@ -1,6 +1,8 @@
 import "dotenv/config"
 import app from "./app.js"
 
-app.listen(process.env.SERVER_PORT, () => {
-  console.log(`app start on port ${process.env.SERVER_PORT}`)
+const serverPort = process.env.SERVER_PORT || 5566
+
+app.listen(serverPort, () => {
+  console.log(`API server start on port ${serverPort}`)
 })

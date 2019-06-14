@@ -1,9 +1,17 @@
 function getFileMetaFromHeaders(headers) {
+  //console.log(headers)
+
+  const [date] = headers["date"]
+  const [fileType] = headers["content-type"]
+  const [fileLength] = headers["content-length"]
+  const [fileNameRaw] = headers["content-disposition"]
+  const fileName = fileNameRaw.match(/"(.*?)"/)[0].replace(/['|"]/g, "")
+
   return {
-    date: headers["date"],
-    fileName: headers["content-disposition"],
-    fileType: headers["content-type"],
-    fileLength: headers["content-length"]
+    date,
+    fileName,
+    fileType,
+    fileLength
   }
 }
 

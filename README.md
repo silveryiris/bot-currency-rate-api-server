@@ -1,8 +1,8 @@
 # bot-currency-rate-api-server
-Fetch csv currency rate from www.bot.com.tw and provides rest api
 
 [![dev packages](https://david-dm.org/silveryiris/bot-currency-rate-api-server.svg)](https://david-dm.org/silveryiris/bot-currency-rate-api-server)
 
+Fetch csv currency rate from www.bot.com.tw and provides rest api.
 
 # Usage
 
@@ -23,14 +23,21 @@ npm run start:dev
 
 You can create your own `.env` file and place under the project root.
 
-File example :
+### File example :
+````
+SERVER_PORT = 66666
+
+CACHE_TIME = 20m
+````
+
+### Default value without .env file is 
 ````
 SERVER_PORT = 5566
 
-CACHE_TIME = 1m
+CACHE_TIME = 2m
 ````
 
-Full cache time format support is on [cache-that](https://github.com/silveryiris/cache-that#time-format-support)  
+Full cache time format support is on [cache-that](https://github.com/silveryiris/cache-that#time-format-support).
 
 # Default API
 

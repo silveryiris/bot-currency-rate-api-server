@@ -10,7 +10,13 @@ It's a standalone api server. you can integrate these middleware by you own.
 
 # Start up server
 ````
-npm run start or npm run start:dev
+npm run start
+````
+
+or 
+
+````
+npm run start:dev
 ````
 
 # Config

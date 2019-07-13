@@ -21,7 +21,7 @@
     "mocha": "^6.1.4"
   },
   "dependencies": {
-    "cache-that": "0.0.3",
+    "cache-that": "0.0.4",
     "compression": "^1.7.4",
     "cross-env": "^5.2.0",
     "dotenv": "^8.0.0",

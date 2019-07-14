@@ -3,6 +3,8 @@ import express from "express"
 import logger from "morgan"
 import compression from "compression"
 import routes from "./routes/index.js"
+import cors from "cors"
+import corsConfig from "./corsConfig.js"
 
 const app = express()
 const env = process.env.NODE_ENV
@@ -11,6 +13,8 @@ if (env === "development") {
   app.use(logger("combined"))
 }
 
+// Remember to change cors config
+app.use(cors(corsConfig))
 app.use(compression())
 app.use(routes)
 

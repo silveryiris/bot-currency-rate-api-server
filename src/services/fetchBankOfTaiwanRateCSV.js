@@ -11,8 +11,27 @@ export async function getJson() {
     const csv = new SilveryCSV()
     const rawArray = csv.csvToArray(raw)
 
+    const dataKeys = [
+      "cash",
+      "spot",
+      "forward10Days",
+      "forward30Days",
+      "forward60Days",
+      "forward90Days",
+      "forward120Days",
+      "forward150Days",
+      "forward180Days"
+    ]
+
     const rates = rawArray.data.map(r => {
-      return { [r[0]]: { bankBuying: r.slice(2, 11), bankSelling: r.slice(12, -1) } }
+      const formating = (o, x, i) => {
+        return Object.assign(o, { [dataKeys[i]]: x })
+      }
+
+      const buying = r.slice(2, 11).reduce(formating, {})
+      const selling = r.slice(12, -1).reduce(formating, {})
+
+      return { currency: r[0], buying, selling }
     })
 
     return { ...meta, data: rates }

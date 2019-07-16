@@ -1,6 +1,4 @@
 function getFileMetaFromHeaders(headers) {
-  //console.log(headers)
-
   const [date] = headers["date"]
   const [fileType] = headers["content-type"]
   const [fileLength] = headers["content-length"]

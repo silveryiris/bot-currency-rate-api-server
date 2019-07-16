@@ -29,6 +29,6 @@
     "express": "^4.17.1",
     "morgan": "^1.9.1",
     "node-fetch": "^2.6.0",
-    "papaparse": "^5.0.0"
+    "silvery-csv": "0.0.1"
   }
 }

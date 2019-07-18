@@ -8,7 +8,7 @@
   "description": "Fetch csv currency rate from www.bot.com.tw and provides rest api",
   "main": "index.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=production node -r esm src/server.js",
+    "start": "cross-env NODE_ENV=production pm2 start src/server.js --node-args='-r esm'",
     "start:dev": "cross-env NODE_ENV=development node -r esm src/server.js",
     "test": "cross-env NODE_ENV=test mocha -r esm -t 10000"
   },

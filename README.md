@@ -22,12 +22,20 @@ npm run start:dev
 # Config
 
 You can create your own `.env` file and place under the project root.
+All Environment variables are safty fallback with default value if you leave it empty.
 
 ### File example :
 ````
 SERVER_PORT = 66666
 
 CACHE_TIME = 20m
+
+CORS_WHITE_LIST = https://exmaple.com , https://www.example.com
+
+CORS_AllOWED_METHODS = GET , POST , PATCH
+
+CORS_AllOWED_HEADERS = Content-Type
+
 ````
 
 ### Default value without .env file : 
@@ -35,6 +43,12 @@ CACHE_TIME = 20m
 SERVER_PORT = 5566
 
 CACHE_TIME = 2m
+
+CORS_WHITE_LIST = true
+
+CORS_AllOWED_METHODS = GET
+
+CORS_AllOWED_HEADERS = Content-Type , Authorization
 ````
 
 Full cache time format support is on [cache-that](https://github.com/silveryiris/cache-that#time-format-support).

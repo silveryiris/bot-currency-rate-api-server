@@ -63,9 +63,56 @@ Full currency rate data on the Bank of Taiwan csv file.
 
 - date
 - fileName
-- fileType
-- fileLength
 - data
+
+### date
+Request date time with GMT for time zone.
+````
+{"date":"Thu, 18 Jul 2019 16:06:06 GMT", ...... }
+````
+
+### fileName
+The source file name on the Bank of Taiwan.
+````
+{"fileName":"ExchangeRate@201907181600.csv", ...... }
+````
+
+### data
+Format the currency rates csv file on the Bank of Taiwan to json ,
+for better readability and code usage.
+````
+{
+  "data": [
+    {
+      "currency": "USD",
+      "buying": {
+        "cash": "30.66500",
+        "spot": "31.01500",
+        "forward10Days": "30.99500",
+        "forward30Days": "30.95500",
+        "forward60Days": "30.90000",
+        "forward90Days": "30.85100",
+        "forward120Days": "30.79900",
+        "forward150Days": "30.74700",
+        "forward180Days": "30.68700"
+      },
+      "selling": {
+        "cash": "31.33500",
+        "spot": "31.11500",
+        "forward10Days": "31.09800",
+        "forward30Days": "31.06500",
+        "forward60Days": "31.01200",
+        "forward90Days": "30.96200",
+        "forward120Days": "30.91700",
+        "forward150Days": "30.87300",
+        "forward180Days": "30.83300"
+      }
+    },
+    .......
+  ]
+}
+
+````
 
 # Test
 

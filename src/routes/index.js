@@ -4,7 +4,7 @@ import pageNotFound404Error from "./error/pageNotFound.js"
 
 const router = express.Router()
 
-router.use("/", rate)
+router.use("/api", rate)
 
 // keep this on the tail
 router.use("/", pageNotFound404Error)

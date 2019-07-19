@@ -18,7 +18,7 @@
     "chai": "^4.2.0",
     "eslint": "^6.0.1",
     "esm": "^3.2.25",
-    "mocha": "^6.1.4"
+    "mocha": "^6.2.0"
   },
   "dependencies": {
     "cache-that": "0.0.4",
@@ -29,6 +29,6 @@
     "express": "^4.17.1",
     "morgan": "^1.9.1",
     "node-fetch": "^2.6.0",
-    "silvery-csv": "0.0.1"
+    "silvery-csv": "0.0.2"
   }
 }

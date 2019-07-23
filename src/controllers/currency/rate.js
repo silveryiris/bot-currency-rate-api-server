@@ -8,7 +8,7 @@ export function getBankCurrencyRate(req, res) {
 
 export function getCurrencyRate(req, res) {
   const validCurrencyCode = /[a-zA-Z]{3}/
-  const currencyCode = req.params.currency
+  const currencyCode = req.params.currencyCode
 
   if (res.locals.rateData !== undefined && validCurrencyCode.test(currencyCode)) {
     const [result] = res.locals.rateData.data.filter(x => x.currency.toUpperCase() === currencyCode.toUpperCase())

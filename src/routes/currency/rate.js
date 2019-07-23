@@ -28,6 +28,6 @@ const getCurrencyRates = async (req, res, next) => {
 }
 
 router.get("/rate", getCurrencyRates, rateController.getBankCurrencyRate)
-router.get("/rate/:currency", getCurrencyRates, rateController.getCurrencyRate)
+router.get("/rate/:currencyCode", getCurrencyRates, rateController.getCurrencyRate)
 
 export default router

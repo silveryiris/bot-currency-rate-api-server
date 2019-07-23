@@ -44,19 +44,28 @@ describe("Test REST API of fetch Bank of Taiwan currency rate", () => {
   })
 
   it("Can response full currency rate with json format", async () => {
+    const baseCurrency = "TWD"
     const result = await fetch(`${endpoint}/rate`).then(res => res.json())
     const keys = Object.keys(result)
 
-    expect(keys).members(["date", "fileName", "data"])
+    expect(keys).members(["baseCurrency", "date", "fileName", "data"])
+    expect(result.baseCurrency).equal(baseCurrency)
     expect(result.data.length).equal(19)
   })
 
   it("Can response specific currency rate depends on currency code", async () => {
+    const baseCurrency = "TWD"
     const currencyCode = "USD"
     const result = await fetch(`${endpoint}/rate/${currencyCode}`).then(res => res.json())
     const keys = Object.keys(result)
+    const dataKeys = Object.keys(result.data[0])
 
-    expect(keys).members(["currency", "buying", "selling"])
-    expect(result.currency).equal(currencyCode)
+    expect(keys).members(["baseCurrency", "date", "fileName", "data"])
+    expect(result.baseCurrency).equal(baseCurrency)
+    expect(result.data.length).equal(1)
+    expect(dataKeys).members(["currency", "buying", "selling"])
+    expect(result.data[0].currency).equal(currencyCode)
+    expect(Object.keys(result.data[0].buying).length).equal(9)
+    expect(Object.keys(result.data[0].selling).length).equal(9)
   })
 })

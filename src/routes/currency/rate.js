@@ -11,6 +11,8 @@ const router = express.Router()
 const getCurrencyRates = async (req, res, next) => {
   const botRateDataKey = "bot-rate-data"
   const rateData = cache.getItem(botRateDataKey)
+  // Bank of Taiwan API source only support base currency as TWD
+  const baseCurrency = "TWD"
 
   if (rateData !== undefined) {
     res.locals.rateData = rateData
@@ -18,8 +20,9 @@ const getCurrencyRates = async (req, res, next) => {
   } else {
     try {
       const data = await fetchRateData()
-      cache.setItem(botRateDataKey, data)
-      res.locals.rateData = data
+      const result = { baseCurrency, ...data }
+      cache.setItem(botRateDataKey, result)
+      res.locals.rateData = result
       next()
     } catch (err) {
       next(err)

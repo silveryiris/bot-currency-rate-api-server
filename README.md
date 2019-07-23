@@ -113,6 +113,37 @@ for better readability and code usage.
 }
 
 ````
+## GET: `/rate/:currencyCode`
+
+Return specific currency rate data
+
+````
+{
+  currency: 'USD',
+  buying: {
+    cash: '30.67500',
+    spot: '31.02500',
+    forward10Days: '31.00400',
+    forward30Days: '30.96100',
+    forward60Days: '30.91100',
+    forward90Days: '30.85800',
+    forward120Days: '30.80300',
+    forward150Days: '30.75800',
+    forward180Days: '30.68700'
+  },
+  selling: {
+    cash: '31.34500',
+    spot: '31.12500',
+    forward10Days: '31.10800',
+    forward30Days: '31.07500',
+    forward60Days: '31.02300',
+    forward90Days: '30.97000',
+    forward120Days: '30.92200',
+    forward150Days: '30.88000',
+    forward180Days: '30.83300'
+  }
+}
+````
 
 # Test
 

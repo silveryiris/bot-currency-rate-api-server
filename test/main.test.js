@@ -33,7 +33,7 @@ describe("API server basic", () => {
 describe("Test REST API of fetch Bank of Taiwan currency rate", () => {
   let server = undefined
   const port = 65535
-  const endpoint = `http://127.0.0.1:${port}`
+  const endpoint = `http://127.0.0.1:${port}/api`
 
   beforeEach(() => {
     server = app.listen(port)
@@ -47,7 +47,16 @@ describe("Test REST API of fetch Bank of Taiwan currency rate", () => {
     const result = await fetch(`${endpoint}/rate`).then(res => res.json())
     const keys = Object.keys(result)
 
-    expect(keys).members(["date", "fileName", "fileType", "fileLength", "data"])
+    expect(keys).members(["date", "fileName", "data"])
     expect(result.data.length).equal(19)
+  })
+
+  it("Can response specific currency rate depends on currency code", async () => {
+    const currencyCode = "USD"
+    const result = await fetch(`${endpoint}/rate/${currencyCode}`).then(res => res.json())
+    const keys = Object.keys(result)
+
+    expect(keys).members(["currency", "buying", "selling"])
+    expect(result.currency).equal(currencyCode)
   })
 })

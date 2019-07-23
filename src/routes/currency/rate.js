@@ -8,27 +8,26 @@ const cacheTime = process.env.CACHE_TIME || "2m"
 const cache = new CacheThat(cacheTime)
 const router = express.Router()
 
-router.get(
-  "/rate",
-  async (req, res, next) => {
-    const botRateDataKey = "bot-rate-data"
-    const rateData = cache.getItem(botRateDataKey)
+const getCurrencyRates = async (req, res, next) => {
+  const botRateDataKey = "bot-rate-data"
+  const rateData = cache.getItem(botRateDataKey)
 
-    if (rateData !== undefined) {
-      res.locals.rateData = rateData
+  if (rateData !== undefined) {
+    res.locals.rateData = rateData
+    next()
+  } else {
+    try {
+      const data = await fetchRateData()
+      cache.setItem(botRateDataKey, data)
+      res.locals.rateData = data
       next()
-    } else {
-      try {
-        const data = await fetchRateData()
-        cache.setItem(botRateDataKey, data)
-        res.locals.rateData = data
-        next()
-      } catch (err) {
-        next(err)
-      }
+    } catch (err) {
+      next(err)
     }
-  },
-  rateController.getBankCurrencyRate
-)
+  }
+}
+
+router.get("/rate", getCurrencyRates, rateController.getBankCurrencyRate)
+router.get("/rate/:currency", getCurrencyRates, rateController.getCurrencyRate)
 
 export default router

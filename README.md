@@ -61,9 +61,17 @@ Return json format response.
 
 Full currency rate data on the Bank of Taiwan csv file.
 
+- baseCurrency
 - date
 - fileName
 - data
+
+### baseCurrency
+The base currency with this rates api is fixed with "TWD"
+
+````
+{"baseCurrency":"TWD",.....}
+````
 
 ### date
 Request date time with GMT for time zone.
@@ -82,6 +90,9 @@ Format the currency rates csv file on the Bank of Taiwan to json ,
 for better readability and code usage.
 ````
 {
+  "baseCurrency":"TWD",
+  "date":"Thu, 18 Jul 2019 16:06:06 GMT",
+  "fileName":"ExchangeRate@201907181600.csv",
   "data": [
     {
       "currency": "USD",
@@ -117,31 +128,40 @@ for better readability and code usage.
 
 Return specific currency rate data
 
+Below codes is result that request with `endpoint`/rate/jpy
+
 ````
 {
-  currency: 'USD',
-  buying: {
-    cash: '30.67500',
-    spot: '31.02500',
-    forward10Days: '31.00400',
-    forward30Days: '30.96100',
-    forward60Days: '30.91100',
-    forward90Days: '30.85800',
-    forward120Days: '30.80300',
-    forward150Days: '30.75800',
-    forward180Days: '30.68700'
-  },
-  selling: {
-    cash: '31.34500',
-    spot: '31.12500',
-    forward10Days: '31.10800',
-    forward30Days: '31.07500',
-    forward60Days: '31.02300',
-    forward90Days: '30.97000',
-    forward120Days: '30.92200',
-    forward150Days: '30.88000',
-    forward180Days: '30.83300'
-  }
+  "baseCurrency": "TWD",
+  "date": "Tue, 23 Jul 2019 10:03:24 GMT",
+  "fileName": "ExchangeRate@201907231600.csv",
+  "data": [
+    {
+      "currency": "JPY",
+      "buying": {
+        "cash": "0.27820",
+        "spot": "0.28550",
+        "forward10Days": "0.28550",
+        "forward30Days": "0.28550",
+        "forward60Days": "0.28570",
+        "forward90Days": "0.28580",
+        "forward120Days": "0.28590",
+        "forward150Days": "0.28590",
+        "forward180Days": "0.28600"
+      },
+      "selling": {
+        "cash": "0.29100",
+        "spot": "0.28950",
+        "forward10Days": "0.28960",
+        "forward30Days": "0.28980",
+        "forward60Days": "0.28990",
+        "forward90Days": "0.29010",
+        "forward120Days": "0.29040",
+        "forward150Days": "0.29070",
+        "forward180Days": "0.29100"
+      }
+    }
+  ]
 }
 ````
 

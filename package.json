@@ -9,7 +9,7 @@
   "main": "index.js",
   "scripts": {
     "start": "cross-env NODE_ENV=production pm2 start src/server.js --node-args='-r esm'",
-    "start:dev": "cross-env NODE_ENV=development node src/server.js",
+    "serve": "cross-env NODE_ENV=development node src/server.js",
     "test": "cross-env NODE_ENV=test mocha -t 10000"
   },
   "author": "Wen Wei , Chang",

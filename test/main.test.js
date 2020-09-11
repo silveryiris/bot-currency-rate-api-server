@@ -1,6 +1,8 @@
 import app from "../src/app.js"
-import { expect } from "chai"
+import chai from "chai"
 import fetch from "node-fetch"
+
+const { expect } = chai
 
 describe("Start up", () => {
   it("Can starup server without errror.", () => {
@@ -25,14 +27,14 @@ describe("API server basic", () => {
   })
 
   it("Can handle 404 page not found error", async () => {
-    const res = await fetch(`${endpoint}/test-error`).then(res => res.json())
+    const res = await fetch(`${endpoint}/test-error`).then((res) => res.json())
     expect(res.statusCode).equal(404)
   })
 })
 
 describe("Test REST API of fetch Bank of Taiwan currency rate", () => {
   let server = undefined
-  const port = 65535
+  const port = 9000
   const endpoint = `http://127.0.0.1:${port}/api`
 
   beforeEach(() => {
@@ -45,7 +47,8 @@ describe("Test REST API of fetch Bank of Taiwan currency rate", () => {
 
   it("Can response full currency rate with json format", async () => {
     const baseCurrency = "TWD"
-    const result = await fetch(`${endpoint}/rate`).then(res => res.json())
+    const response = await fetch(`${endpoint}/rate`)
+    const result = await response.json()
     const keys = Object.keys(result)
 
     expect(keys).members(["baseCurrency", "date", "fileName", "data"])
@@ -56,7 +59,8 @@ describe("Test REST API of fetch Bank of Taiwan currency rate", () => {
   it("Can response specific currency rate depends on currency code", async () => {
     const baseCurrency = "TWD"
     const currencyCode = "USD"
-    const result = await fetch(`${endpoint}/rate/${currencyCode}`).then(res => res.json())
+    const response = await fetch(`${endpoint}/rate/${currencyCode}`)
+    const result = await response.json()
     const keys = Object.keys(result)
     const dataKeys = Object.keys(result.data[0])
 

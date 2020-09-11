@@ -1,10 +1,12 @@
-import "dotenv/config"
+import dotenv from "dotenv"
 import express from "express"
 import logger from "morgan"
 import compression from "compression"
 import routes from "./routes/index.js"
 import cors from "cors"
 import corsConfig from "./corsConfig.js"
+
+dotenv.config()
 
 const app = express()
 const env = process.env.NODE_ENV

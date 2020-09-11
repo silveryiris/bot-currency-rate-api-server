@@ -1,8 +1,10 @@
 import express from "express"
-import "dotenv/config"
+import dotenv from "dotenv"
 import fetchRateData from "../../services/fetchBankOfTaiwanRateCSV.js"
 import rateController from "../../controllers/currency/rate.js"
 import CacheThat from "cache-that"
+
+dotenv.config()
 
 const cacheTime = process.env.CACHE_TIME || "2m"
 const cache = new CacheThat(cacheTime)
